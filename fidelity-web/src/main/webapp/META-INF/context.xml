@@ -1,0 +1,6 @@
+<Context>
+	<Resource name="jdbc/FidelityDB" auth="Container" type="javax.sql.DataSource"
+		maxActive="100" maxIdle="30" maxWait="10000" username="fidelityuser"
+		password="fidelitypass" driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
+		url="jdbc:derby:/Volumes/Documents/work/data/Fidelity;create=true" />
+</Context>
