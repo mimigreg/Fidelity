@@ -22,7 +22,7 @@ public class ListClientView implements Serializable {
 	public static ListClientView fromDatabaseClient(List<Client> listClient) {
 		ListClientView returnValue = new ListClientView();
 		
-		if (listClient != null && listClient.size() > 0) {
+		if (listClient != null) {
 			List<ListClientLineView> populatedItems= new ArrayList<ListClientLineView>(listClient.size());
 			for (Client aClient : listClient) {
 				populatedItems.add(ListClientLineView.fromDatabaseClient(aClient));

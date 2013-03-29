@@ -29,8 +29,7 @@ public class Client implements Serializable {
 	}
 
 	/**
-	 * @param firstName
-	 * @param givenName
+	 * @param name
 	 * @param homePhone
 	 * @param cellPhone
 	 * @param homeAddress
@@ -38,12 +37,11 @@ public class Client implements Serializable {
 	 * @param birthDate
 	 * @param membershipDate
 	 */
-	public Client(String firstName, String givenName, String homePhone,
+	public Client(String name, String homePhone,
 			String cellPhone, String homeAddress, String email, Date birthDate,
 			Date membershipDate) {
 		super();
-		this.firstName = firstName;
-		this.givenName = givenName;
+		this.name = name;
 		this.homePhone = homePhone;
 		this.cellPhone = cellPhone;
 		this.homeAddress = homeAddress;
@@ -56,12 +54,9 @@ public class Client implements Serializable {
 	@GeneratedValue(generator = "client_seq")
 	@SequenceGenerator(sequenceName = "client_sequence", name = "client_seq")
 	private int id;
-	
-	@Column(name = "FIRST_NAME", length = 100)
-	private String firstName;
-	
-	@Column(name = "GIVEN_NAME", length = 100)
-	private String givenName;
+		
+	@Column(name = "NAME", length = 100)
+	private String name;
 	
 	@Column(name = "HOME_PHONE", length = 20)
 	private String homePhone;
@@ -102,29 +97,15 @@ public class Client implements Serializable {
 	/**
 	 * @return the firstName
 	 */
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
 	/**
 	 * @param firstName the firstName to set
 	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	/**
-	 * @return the givenName
-	 */
-	public String getGivenName() {
-		return givenName;
-	}
-
-	/**
-	 * @param givenName the givenName to set
-	 */
-	public void setGivenName(String givenName) {
-		this.givenName = givenName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -223,8 +204,7 @@ public class Client implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", firstName=" + firstName + ", givenName="
-				+ givenName + ", homePhone=" + homePhone + ", cellPhone="
+		return "Client [id=" + id + ", name=" + name  + ", homePhone=" + homePhone + ", cellPhone="
 				+ cellPhone + ", homeAddress=" + homeAddress + ", email="
 				+ email + ", birthDate=" + birthDate + ", membershipDate="
 				+ membershipDate + "]";
@@ -243,9 +223,7 @@ public class Client implements Serializable {
 				+ ((cellPhone == null) ? 0 : cellPhone.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result
-				+ ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result
-				+ ((givenName == null) ? 0 : givenName.hashCode());
+				+ ((name == null) ? 0 : name.hashCode());
 		result = prime * result
 				+ ((homeAddress == null) ? 0 : homeAddress.hashCode());
 		result = prime * result
@@ -292,18 +270,11 @@ public class Client implements Serializable {
 		} else if (!email.equals(other.email)) {
 			return false;
 		}
-		if (firstName == null) {
-			if (other.firstName != null) {
+		if (name == null) {
+			if (other.name != null) {
 				return false;
 			}
-		} else if (!firstName.equals(other.firstName)) {
-			return false;
-		}
-		if (givenName == null) {
-			if (other.givenName != null) {
-				return false;
-			}
-		} else if (!givenName.equals(other.givenName)) {
+		} else if (!name.equals(other.name)) {
 			return false;
 		}
 		if (homeAddress == null) {

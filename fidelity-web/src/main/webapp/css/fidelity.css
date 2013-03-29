@@ -1,4 +1,13 @@
 #grid {
-	width: 1246px;
+/* 	width: 1246px; */
 	height: 300px;
+}
+
+.claro .dijitCalendarDisabledDate {
+  background-color:#333 !important;
+  text-decoration:none !important;
+}
+
+.claro table.dijitCalendarContainer {
+  margin: 25px auto;
 }

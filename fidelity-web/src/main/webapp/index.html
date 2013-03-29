@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Fidelity !</title>
-  	<script src="//ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js" data-dojo-config="async: true" ></script>
-	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.1/dojo/resources/dojo.css">
-	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.1/dijit/themes/claro/claro.css">
-	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.1/dojox/grid/resources/claroGrid.css">
-
-  	<script type="text/javascript" src="js/fidelity.js" ></script>
-	<link rel="stylesheet" href="css/fidelity.css">
+<meta charset="UTF-8">
+<title>Fidelity !</title>
+<script src="//ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js"	data-dojo-config="async: true"></script><!-- ,parseOnLoad :true -->
+<link rel="stylesheet"	href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.1/dojo/resources/dojo.css">
+<link rel="stylesheet"	href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.1/dijit/themes/claro/claro.css">
+<link rel="stylesheet"	href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.1/dojox/grid/resources/claroGrid.css">
+<script>
+		require([
+			"dojo/parser",
+			"dijit/form/TextBox",
+			"dijit/form/DateTextBox",
+			"dijit/form/FilteringSelect",
+			"dijit/form/Form",
+			"dojo/data/ItemFileReadStore",
+			"dijit/form/Button"
+		]);
+</script>
+<link rel="stylesheet" href="css/fidelity.css">
 </head>
-<body  class="claro">
+<body class="claro">
+<!-- 	<div data-dojo-type="dijit.form.Form" id="myResearchForm" data-dojo-id="myResearchForm" encType="multipart/form-data" action=""	method=""> -->
+	<div id="myResearch">
+		<label for="rechName">Name </label><input type="text" id="rechName" name="rechName" />
+		<label for="rechDOB">Date of birth </label><input type="text" id="rechDOB" name="rechDOB" />
+	</div>
 	<div id="grid"></div>
+	<script type="text/javascript" src="js/searchFields.js"></script>
+<script type="text/javascript" src="js/clientGrid.js"></script>
+	
 </body>
 </html>

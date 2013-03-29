@@ -1,6 +1,7 @@
 package fr.michot.fidelity.viewModel;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import fr.michot.fidelity.db.Client;
 
@@ -12,17 +13,16 @@ public class ListClientLineView implements Serializable{
 	private static final long serialVersionUID = 1239976613938063629L;
 	
 	private String id;
-	private String firstName;
-	private String givenName;
+	private String name;
 	private String homePhone;
 	private String cellPhone;
 	private String homeAddress;
 	private String email;
-	private String birthDate;
-	private String membershipDate;
+	private Date birthDate;
+	private Date membershipDate;
 	
 	public static ListClientLineView fromDatabaseClient(Client client) {
-		return new ListClientLineView(Integer.toString(client.getId()),client.getFirstName(),client.getGivenName(),client.getHomePhone(),client.getCellPhone(),client.getHomeAddress(),client.getEmail(), client.getBirthDate().toString(), client.getMembershipDate().toString());
+		return new ListClientLineView(Integer.toString(client.getId()),client.getName(),client.getHomePhone(),client.getCellPhone(),client.getHomeAddress(),client.getEmail(), client.getBirthDate(), client.getMembershipDate());
 	}
 
 	/**
@@ -35,8 +35,7 @@ public class ListClientLineView implements Serializable{
 
 	/**
 	 * @param id
-	 * @param firstName
-	 * @param givenName
+	 * @param name
 	 * @param homePhone
 	 * @param cellPhone
 	 * @param homeAddress
@@ -44,13 +43,12 @@ public class ListClientLineView implements Serializable{
 	 * @param birthDate
 	 * @param membershipDate
 	 */
-	public ListClientLineView(String id, String firstName, String givenName,
+	public ListClientLineView(String id, String name, 
 			String homePhone, String cellPhone, String homeAddress,
-			String email, String birthDate, String membershipDate) {
+			String email, Date birthDate, Date membershipDate) {
 		super();
 		this.id = id;
-		this.firstName = firstName;
-		this.givenName = givenName;
+		this.name = name;
 		this.homePhone = homePhone;
 		this.cellPhone = cellPhone;
 		this.homeAddress = homeAddress;
@@ -76,29 +74,15 @@ public class ListClientLineView implements Serializable{
 	/**
 	 * @return the firstName
 	 */
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
 	/**
 	 * @param firstName the firstName to set
 	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	/**
-	 * @return the givenName
-	 */
-	public String getGivenName() {
-		return givenName;
-	}
-
-	/**
-	 * @param givenName the givenName to set
-	 */
-	public void setGivenName(String givenName) {
-		this.givenName = givenName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -160,28 +144,28 @@ public class ListClientLineView implements Serializable{
 	/**
 	 * @return the birthDate
 	 */
-	public String getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
 	/**
 	 * @param birthDate the birthDate to set
 	 */
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
 	/**
 	 * @return the membershipDate
 	 */
-	public String getMembershipDate() {
+	public Date getMembershipDate() {
 		return membershipDate;
 	}
 
 	/**
 	 * @param membershipDate the membershipDate to set
 	 */
-	public void setMembershipDate(String membershipDate) {
+	public void setMembershipDate(Date membershipDate) {
 		this.membershipDate = membershipDate;
 	}
 	
