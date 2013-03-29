@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.michot.fidelity.db.Client;
 
 public class ClientServiceImpl {
+	public static final int NUMBER_OF_ROWS = 100;
+	
 	@PersistenceContext
 	EntityManager em;
 
@@ -27,22 +29,33 @@ public class ClientServiceImpl {
 	 * @param membershipDate
 	 */
 	@Transactional
-	public Client createNew(String firstName, String givenName,
+	public Client createNew(String name, 
 			String homePhone, String cellPhone, String homeAddress,String email,
 			Date birthDate, Date membershipDate) {
-		Client aClient = new Client(firstName, givenName, homePhone, cellPhone,
+		Client aClient = new Client(name, homePhone, cellPhone,
 				homeAddress, email, birthDate, membershipDate);
 		em.persist(aClient);
 		return aClient;
 	}
 	
 	@Transactional
-	public List<Client> searchByGivenName(String givenName) {
-		if(givenName==null) return new ArrayList<Client>();
+	public List<Client> searchByGivenName(String name) {
+		if(name==null) return new ArrayList<Client>();
 		
-		TypedQuery<Client> uneRequete = em.createQuery("SELECT cli FROM Client cli WHERE cli.givenName LIKE :givenName", Client.class);
-		uneRequete.setParameter("givenName", givenName+"%");
-		return uneRequete.setMaxResults(50).getResultList();		
+		TypedQuery<Client> uneRequete = em.createQuery("SELECT cli FROM Client cli WHERE cli.name LIKE :name", Client.class);
+		uneRequete.setParameter("name", name);
+		uneRequete.setMaxResults(NUMBER_OF_ROWS);
+		return uneRequete.getResultList();		
+	}
+	
+	@Transactional
+	public List<Client> searchByBirthDate(Date date) {
+		if(date==null) return new ArrayList<Client>();
+		
+		TypedQuery<Client> uneRequete = em.createQuery("SELECT cli FROM Client cli WHERE cli.birthDate = :date", Client.class);
+		uneRequete.setParameter("date", date);
+		uneRequete.setMaxResults(NUMBER_OF_ROWS);
+		return uneRequete.getResultList();		
 	}
 
 }
