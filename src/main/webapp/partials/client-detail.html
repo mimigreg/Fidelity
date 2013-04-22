@@ -1,0 +1,23 @@
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<button type="button" class="btn btn-navbar" data-toggle="collapse"	data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="brand" href="#/client">Fidelity</a>
+		<!--/.nav-collapse -->
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span4 well">
+			<h1>{{client.nom}}</h1>
+			<div>{{client.dateArrivee|date:'shortDate'}}</div>
+			<button ng-click="edit()" type="button" class="btn btn-block">Modifier</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<button type="button" class="btn btn-navbar" data-toggle="collapse"	data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="brand" href="#/client">Fidelity</a>
+			<form class="navbar-form form-search pull-right">
+				<input class="span2 input-medium search-query" type="text" placeholder="Client" ng-model="query">
+			</form>
+		<!--/.nav-collapse -->
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span7 offset5">
+			<div class="row-fluid" ng-repeat="client in clients| filter:query |orderBy:'nom'">
+				<div class="span3">
+					  <a href="#/client/{{client.id | escape}}" class="thumb">
+					      <span>{{client.nom}}</span>
+				      </a>
+				</div>
+				<div class="span6">
+			      {{client.dateArrivee|date:'shortDate'}}
+				</div>
+			</div> 
+		</div>
+		<div class="span4 affix">
+			<div class="row-fluid">
+				<div class="span12">
+					<button type="button" class="btn btn-block" ng-click="ajouter()">Ajouter un client</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
